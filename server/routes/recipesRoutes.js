@@ -1,9 +1,21 @@
 import express from "express";
+import { 
+  getAllRecipes,
+  getRecipeById,
+  createRecipe,
+  updateRecipe,
+  deleteRecipe
+} from '../controllers/recipesController.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json('/api/recipes/ works');
-});
+router.route('/')
+  .get(getAllRecipes)
+  .post(createRecipe);
+
+router.route('/:id')
+  .get(getRecipeById)
+  .put(updateRecipe)
+  .delete(deleteRecipe);
 
 export default router;
